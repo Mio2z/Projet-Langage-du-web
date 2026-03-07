@@ -8,6 +8,7 @@
 
 body {
     margin: 0 auto;
+    color: red;
 }
 
 
@@ -59,4 +60,5 @@ nav.nav  {
 
 nav.nav li {
     color: white;
+
 }
