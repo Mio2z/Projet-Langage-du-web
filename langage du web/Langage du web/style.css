@@ -6,6 +6,10 @@
     font-family: 'Montserrat';
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0 auto;
 }
@@ -32,6 +36,7 @@ section.top-page {
 
 .landing-page {
     padding: 20px 50px;
+    position : relative;
 }
 
 .big-title {
@@ -39,12 +44,13 @@ section.top-page {
     font-size: 80px;
     font-family: 'Abril Fatface', cursive;
     font-weight: 100;
+  
 }
 .scroll-down{
     color: white;
     text-decoration: none;
     position: absolute;
-    bottom: 160px;
+    bottom: 0;
 
 }
 nav.nav  {
@@ -58,5 +64,197 @@ nav.nav  {
 
 nav.nav li {
     color: white;
+}
 
+
+
+.services {
+    display: flex;
+    justify-content: space-between;
+    margin:50px;
+
+}
+
+
+.service-item{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.delivery-icon {
+    font-size: 50px;
+    color: #000000;
+}
+
+.service-details { 
+    font-weight: 600;
+    width: 200px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 50px;
+    font-family: "Abril Fatface", cursive;
+    font-weight: 100px;
+    position: relative;
+}
+
+.section-title::before { 
+    content: "";
+    position: absolute;
+    background-color:#000000;
+    width: 50px;
+    height: 7px;
+    bottom : 0;
+}
+
+.bests-items{
+    margin:50px;
+}
+
+
+
+
+.best-products {
+    background-color: red;
+    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.creatine-box { 
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+.no-grid{
+    min-width: 350px;
+    height: 500px;
+    flex: 1;
+}
+
+.creatine1{ 
+   background-image: url('images/creatine.png'); 
+}
+
+.whey1{ 
+   background-image: url('images/whey.png'); 
+}
+
+.elastique1{ 
+   background-image: url('images/elastique.png'); 
+}
+
+.gourde1{ 
+   background-image: url('images/gourde.png'); 
+}
+
+.creatine-details {
+    position : absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: #FFFFFFDF;
+    padding: 5px 20px;
+    box-sizing: border-box;
+}
+
+.creatine-name {
+   font-size : 22px;
+   font-weight: 600;
+   line-height: 3px;
+}
+
+.creatine-price {
+   color: #000000;
+   line-height: 3px;
+   font-size: 14px;
+   font-weight: 800;
+}
+
+
+.all-clubs { 
+    margin: 100px;
+}
+
+.club-grid{
+   display: grid;
+   min-height: 150vh;
+   grid-template-columns: repeat(3, 1fr);
+   grid-template-rows: repeat(4, 400px);   
+}
+
+.club-grid1 {
+    background-image: url(images/paris.png);
+    grid-column: 1/3;
+    grid-row: 1/3;
+}
+
+.club-grid2 {
+    background-image: url(images/rennes.png);
+    grid-column: 3/5;
+}
+
+.club-grid3 {
+    background-image: url(images/lyon.png);
+    grid-column: 3/5;
+}
+
+.club-grid4 {
+    background-image: url(images/toulouse.png);
+    grid-column: 1;
+    grid-row: 3/5;
+}
+
+.club-grid5 {
+    background-image: url(images/marseille.png);
+    grid-column: 2/4;
+    grid-row: 3/5;
+}
+
+
+.club-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #FFFFFFDF;
+    padding: 5px 20px;
+    box-sizing: border-box;
+}
+
+.club-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.club-description {
+    font-size: 14px;
+    font-weight: 800;
+    margin: 5px 0 0 0;
+}
+
+.club-box{
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: block;
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 100px;
+    font-weight: 600;
+}
+
+footer a.cgv{
+    text-decoration: none;
+    color: black;
 }
