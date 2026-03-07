@@ -8,14 +8,12 @@
 
 body {
     margin: 0 auto;
-    color: red;
 }
 
 
 header.header {
     display: flex;
     align-items: center;
-    color: red;
 
 }
 
