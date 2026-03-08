@@ -19,7 +19,7 @@ header.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 40px;       /* barre fine */
+    padding: 8px 0px;       /* barre fine */
     height: 130px;             /* hauteur fixe */
 
     background: rgba(255, 255, 255, 0.1);  /* semi-transparent blanc / verre */
@@ -40,7 +40,10 @@ header.header {
 
 
 header.header img {
-    width : 300px;
+    width : 250px;
+    margin: 0;
+    padding: 0;
+
 }
 
 section.top-page {
@@ -59,8 +62,8 @@ section.top-page {
 .big-title {
     color: white;
     font-size: 80px;
-    font-family: 'Abril Fatface', cursive;
-    font-weight: 100;
+    font-family: 'Montserrat', cursive;
+    font-weight: 600;
     margin-top: 200px;
   
 }
@@ -78,12 +81,17 @@ nav.nav  {
     width: 400px;
     gap: 30px;
     margin-right: auto;
+    font-style: italic;
+ 
+    
    
 }
 
 nav.nav li {
     color: white;
     list-style: none;
+    position: relative;
+
 }
 
 nav.nav li a {
@@ -92,9 +100,19 @@ nav.nav li a {
     font-weight: 600;
 }
 
+nav.nav li a::after {
+    content: "";                 
+    position: absolute;
+    left: 0;
+    bottom: -5px;                
+    width: 0%;                     
+    height: 3px;                  
+    background-color: white;    
+    transition: width 0.3s ease;  
+}
 
-nav.nav li a:hover {
-    color: #ff0000; 
+nav.nav li a:hover::after {
+    width: 100%;                  
 }
 
 
