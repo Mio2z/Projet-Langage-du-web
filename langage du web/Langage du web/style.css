@@ -54,10 +54,37 @@ section.top-page {
     position: relative;
 }
 
+.tarifs-page section.top-page {
+    background: none;
+    position: relative;
+    height: 50vh;
+}
 
-.landing-page {
-    padding: 20px 50px;
-    position : relative;
+.tarifs-page section.top-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/tarifs-bg.jpg');
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    z-index: -1;
+}
+
+.tarifs-title {
+    color: white;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 1;
 }
 
 .big-title {
@@ -337,4 +364,97 @@ footer {
 footer a.cgv{
     text-decoration: none;
     color: black;
+}
+
+/* page des tarifs */
+
+/* Conteneur des 3 cartes */
+.tarifs {
+  display: flex;               /* Met les cartes côte à côte */
+  justify-content: center;     /* Centre les cartes */
+  gap: 30px;                   /* Espace entre les cartes */
+  padding: 40px;               /* Espace autour */
+  flex-wrap: wrap;             /* Permet de passer en colonne sur téléphone */
+}
+
+/* Style général d'une carte */
+.card {
+  width: 300px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  transition: 0.3s;
+}
+
+/* Effet au survol */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* Titre de l'offre */
+.card h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Prix */
+.price {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff6600;
+}
+
+/* Frais d'inscription */
+.inscription {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Bonus (fond coloré) */
+.bonus {
+  background: #ffe6cc;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+/* Liste des avantages */
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+/* Options désactivées */
+.disabled {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+/* Bouton */
+.card button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.card button:hover {
+  background: #e05500;
 }
