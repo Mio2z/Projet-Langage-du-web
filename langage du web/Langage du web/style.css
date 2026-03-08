@@ -51,6 +51,7 @@ section.top-page {
     background-size: cover;
     height: 80vh;
     padding: 25px;
+    position: relative;
 }
 
 
@@ -67,13 +68,38 @@ section.top-page {
     margin-top: 200px;
   
 }
-.scroll-down{
+
+
+.scroll-down {
     color: white;
     text-decoration: none;
     position: absolute;
-    bottom: 0;
-
+    left: 7%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-weight: 600;
+    display: inline-flex;       /* largeur juste autour du texte + icône */
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    width: auto;
 }
+
+.scroll-down i {
+    color: inherit;             /* prend la couleur du texte */
+    text-decoration: none;
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+.scroll-down:hover {
+    transform: translateX(-50%) translateY(-3px);
+}
+
 nav.nav  {
     display: flex;
     justify-content: space-between;
