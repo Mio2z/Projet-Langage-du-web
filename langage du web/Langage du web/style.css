@@ -19,21 +19,21 @@ header.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 0px;       /* barre fine */
-    height: 130px;             /* hauteur fixe */
+    padding: 8px 0px;       
+    height: 110px;             
 
-    background: rgba(255, 255, 255, 0.1);  /* semi-transparent blanc / verre */
-    backdrop-filter: blur(12px);           /* flou de l’arrière-plan */
-    -webkit-backdrop-filter: blur(12px);   /* Safari support */
+    background: rgba(255, 255, 255, 0.1);  
+    backdrop-filter: blur(12px);           
+    -webkit-backdrop-filter: blur(12px);   
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* bordure subtile pour effet verre */
-    border-radius: 10px;                     /* coins arrondis optionnel */
-    box-shadow: 0 8px 32px rgba(0,0,0,0.05); /* ombre douce pour profondeur */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 10px;                 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05); 
 
     position: fixed;
-    top: 0px;      /* légèrement décalée du top */
-    left: 0px;     /* légèrement décalée du côté */
-    right: 0px;    /* laisse un petit padding sur la largeur */
+    top: 0px;     
+    left: 0px;     
+    right: 0px;    
     z-index: 1000;
 }
 
@@ -114,16 +114,18 @@ nav.nav  {
 }
 
 nav.nav li {
-    color: white;
+    color: #000000;
     list-style: none;
     position: relative;
 
 }
 
 nav.nav li a {
-    color: white;         
+    color: #000000;         
     text-decoration: none; 
-    font-weight: 600;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 nav.nav li a::after {
@@ -133,7 +135,7 @@ nav.nav li a::after {
     bottom: -5px;                
     width: 0%;                     
     height: 3px;                  
-    background-color: white;    
+    background-color: #000000;    
     transition: width 0.3s ease;  
 }
 
