@@ -143,6 +143,10 @@ nav.nav li a:hover::after {
     width: 100%;                  
 }
 
+nav.nav li a.active::after {
+    width: 100%;
+}
+
 
 .services {
     display: flex;
