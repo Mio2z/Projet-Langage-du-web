@@ -407,6 +407,7 @@ footer a.cgv{
   font-weight: bold;
   background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
@@ -508,6 +509,7 @@ footer a.cgv{
 .h2 .color {
      background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
 }
 
@@ -535,4 +537,8 @@ footer a.cgv{
 ul li {
   line-height: 2; 
 
+}
+
+.menu-déroulant {
+    display: flex;
 }
