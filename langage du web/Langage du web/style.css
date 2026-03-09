@@ -368,7 +368,7 @@ footer a.cgv{
 
 /* page des tarifs */
 
-/* Conteneur des 3 cartes */
+
 .tarifs {
   display: flex;              
   justify-content: center;     
@@ -456,4 +456,25 @@ footer a.cgv{
 
 .card button:hover {
   background: #e05500;
+}
+
+/* Page Programme */
+
+.programme-page section.top-page {
+    background: none;
+    position: relative;
+    height: 50vh;
+}
+
+.programme-page section.top-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/programme-bg.png');
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    z-index: -1;
 }
