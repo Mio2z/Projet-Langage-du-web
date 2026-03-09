@@ -516,6 +516,7 @@ footer a.cgv{
     gap: 5%;
 }
 
+
 .video-container {
    padding-left: 10%;
 }
@@ -524,4 +525,14 @@ footer a.cgv{
     height: 225px;  
 
 }
+.box {
+    width: 600px;
 
+}
+.description-vid span{
+    font-weight: 600;
+}
+ul li {
+  line-height: 2; 
+
+}
