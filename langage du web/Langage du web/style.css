@@ -405,7 +405,9 @@ footer a.cgv{
   text-align: center;
   font-size: 22px;
   font-weight: bold;
-  color: #ff6600;
+  background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 
@@ -473,8 +475,53 @@ footer a.cgv{
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('images/programme-bg.png');
+    background-image: url('images/programme.png');
     background-size: cover;
     clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
     z-index: -1;
 }
+
+.programme-title {
+    color: white;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.title h2 {
+    font-size: 40px;
+    font-weight: 100px;
+    margin-top: 50px;
+    text-align: left;
+    padding-left: 10%;
+
+
+}
+
+.h2 .color {
+     background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.programme-sub {
+   display: flex;              
+    gap: 5%;
+}
+
+.video-container {
+   padding-left: 10%;
+}
+.video-container iframe {
+   width: 400px;   
+    height: 225px;  
+
+}
+
