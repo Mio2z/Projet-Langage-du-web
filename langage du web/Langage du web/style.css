@@ -105,7 +105,7 @@ section.top-page {
     transform: translateX(-50%);
     padding: 10px 20px;
     font-weight: 600;
-    display: inline-flex;       /* largeur juste autour du texte + icône */
+    display: inline-flex;       
     align-items: center;
     gap: 8px;
     transition: color 0.3s ease;
@@ -113,7 +113,7 @@ section.top-page {
 }
 
 .scroll-down i {
-    color: inherit;             /* prend la couleur du texte */
+    color: inherit;             
     text-decoration: none;
     animation: pulse 1.2s infinite ease-in-out;
 }
@@ -370,14 +370,13 @@ footer a.cgv{
 
 /* Conteneur des 3 cartes */
 .tarifs {
-  display: flex;               /* Met les cartes côte à côte */
-  justify-content: center;     /* Centre les cartes */
-  gap: 30px;                   /* Espace entre les cartes */
-  padding: 40px;               /* Espace autour */
-  flex-wrap: wrap;             /* Permet de passer en colonne sur téléphone */
+  display: flex;              
+  justify-content: center;     
+  gap: 30px;                  
+  padding: 40px;               
+  flex-wrap: wrap;            
 }
 
-/* Style général d'une carte */
 .card {
   width: 300px;
   background: white;
@@ -388,20 +387,20 @@ footer a.cgv{
   transition: 0.3s;
 }
 
-/* Effet au survol */
+
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
-/* Titre de l'offre */
+
 .card h3 {
   text-align: center;
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-/* Prix */
+
 .price {
   text-align: center;
   font-size: 22px;
@@ -409,14 +408,14 @@ footer a.cgv{
   color: #ff6600;
 }
 
-/* Frais d'inscription */
+
 .inscription {
   text-align: center;
   font-size: 14px;
   color: #555;
 }
 
-/* Bonus (fond coloré) */
+
 .bonus {
   background: #ffe6cc;
   padding: 10px;
@@ -425,7 +424,7 @@ footer a.cgv{
   font-size: 14px;
 }
 
-/* Liste des avantages */
+
 .card ul {
   list-style: none;
   padding: 0;
@@ -436,13 +435,13 @@ footer a.cgv{
   font-size: 15px;
 }
 
-/* Options désactivées */
+
 .disabled {
   color: #aaa;
   text-decoration: line-through;
 }
 
-/* Bouton */
+
 .card button {
   width: 100%;
   padding: 12px;
