@@ -44,25 +44,28 @@
 
 </section>
 
-<section class="Nos Programmes" >
-    <h2>Nos Programmes</h2>
+<section>
+    <div class="programmes">    
+        <h2 class="pro1">Nos Programmes </h2>
+        <p class="pro2"> Pour des entraînements qui correspondent à tous les types de trainings. </p></div>
+
     <div class="menu-déroulant">
-        <div class="card"> 
+        <div class="card1"> 
             <h3> Musculation</h3>
             <p> Entraînement de développement musculaire et de la condition physique</p>
             <button class="btn"> Plus d'info</button>
             </div>
-        <div class="card"> 
+        <div class="card1"> 
              <h3> CARDIO TRAINING</h3>
             <p> Entraînement de développement musculaire et de la condition physique</p>
             <button class="btn"> Plus d'info</button>
         </div>
-        <div class="card"> 
+        <div class="card1"> 
              <h3> BODY & MIND </h3>
             <p> Entraînement de développement musculaire et de la condition physique</p>
             <button class="btn"> Plus d'info</button>
         </div>
-        <div class="card"> 
+        <div class="card1"> 
              <h3>FITNESS
             
              </h3>
@@ -85,6 +88,47 @@
     <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
     <a href="Conditions générales de vente" class="cgv"></a>
 </footer>
+
+<script>
+const scrollableContainer = document.querySelector('.menu-déroulant');
+
+if (scrollableContainer) {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scrollableContainer.addEventListener('mousedown', (e) => {
+        isDown = true;
+        scrollableContainer.classList.add('dragging');
+        scrollableContainer.style.cursor = 'grabbing';
+        startX = e.pageX - scrollableContainer.offsetLeft;
+        scrollLeft = scrollableContainer.scrollLeft;
+    });
+
+    scrollableContainer.addEventListener('mouseleave', () => {
+        isDown = false;
+        scrollableContainer.classList.remove('dragging');
+        scrollableContainer.style.cursor = 'grab';
+    });
+
+    scrollableContainer.addEventListener('mouseup', () => {
+        isDown = false;
+        scrollableContainer.classList.remove('dragging');
+        scrollableContainer.style.cursor = 'grab';
+    });
+
+    scrollableContainer.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        const x = e.pageX - scrollableContainer.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        scrollableContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    scrollableContainer.addEventListener('mouseenter', () => {
+        if (!isDown) scrollableContainer.style.cursor = 'grab';
+    });
+}
+</script>
 
 </body>
 </html>
