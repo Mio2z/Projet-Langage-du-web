@@ -1,9 +1,10 @@
 
-@import url(https://fonts.google.com/specimen/Montserrat?query=montsserrat);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @import url(https://fonts.google.com/specimen/Abril+Fatface?query=abril&sidebar.open&selection.family=Abril+Fatface);
 
 * {
-    font-family: 'Montserrat';
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 html{
@@ -14,16 +15,35 @@ body {
     margin: 0 auto;
 }
 
-
 header.header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 8px 0px;       
+    height: 110px;             
 
+    background: rgba(255, 255, 255, 0.1);  
+    backdrop-filter: blur(12px);           
+    -webkit-backdrop-filter: blur(12px);   
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); 
+    border-radius: 10px;                 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.05); 
+
+    position: fixed;
+    top: 0px;     
+    left: 0px;     
+    right: 0px;    
+    z-index: 1000;
 }
 
 
+
 header.header img {
-    width : 300px;
+    width : 250px;
+    margin: 0;
+    padding: 0;
+
 }
 
 section.top-page {
@@ -31,41 +51,128 @@ section.top-page {
     background-size: cover;
     height: 80vh;
     padding: 25px;
+    position: relative;
 }
 
+.tarifs-page section.top-page {
+    background: none;
+    position: relative;
+    height: 50vh;
+}
 
-.landing-page {
-    padding: 20px 50px;
-    position : relative;
+.tarifs-page section.top-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/tarifs-bg.jpg');
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    z-index: -1;
+}
+
+.tarifs-title {
+    color: white;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 1;
 }
 
 .big-title {
     color: white;
     font-size: 80px;
-    font-family: 'Abril Fatface', cursive;
-    font-weight: 100;
+    font-family: 'Montserrat', cursive;
+    font-weight: 600;
+    margin-top: 200px;
   
 }
-.scroll-down{
+
+
+.scroll-down {
     color: white;
     text-decoration: none;
     position: absolute;
-    bottom: 0;
-
+    left: 7%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    font-weight: 600;
+    display: inline-flex;       
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+    width: auto;
 }
+
+.scroll-down i {
+    color: inherit;             
+    text-decoration: none;
+    animation: pulse 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+.scroll-down:hover {
+    transform: translateX(-50%) translateY(-3px);
+}
+
 nav.nav  {
     display: flex;
     justify-content: space-between;
     list-style: none;
     width: 400px;
-    margin-left: 100px;
+    gap: 30px;
+    margin-right: auto;
+    font-style: italic;
+ 
+    
    
 }
 
 nav.nav li {
-    color: white;
+    color: #000000;
+    list-style: none;
+    position: relative;
+
 }
 
+nav.nav li a {
+    color: #000000;         
+    text-decoration: none; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+nav.nav li a::after {
+    content: "";                 
+    position: absolute;
+    left: 0;
+    bottom: -5px;                
+    width: 0%;                     
+    height: 3px;                  
+    background-color: #000000;    
+    transition: width 0.3s ease;  
+}
+
+nav.nav li a:hover::after {
+    width: 100%;                  
+}
+
+nav.nav li a.active::after {
+    width: 100%;
+}
 
 
 .services {
@@ -258,3 +365,181 @@ footer a.cgv{
     text-decoration: none;
     color: black;
 }
+
+/* page des tarifs */
+
+
+.tarifs {
+  display: flex;              
+  justify-content: center;     
+  gap: 30px;                  
+  padding: 40px;               
+  flex-wrap: wrap;            
+}
+
+.card {
+  width: 300px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  transition: 0.3s;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+
+.card h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+
+.price {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+.inscription {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+
+.bonus {
+  background: #ffe6cc;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card ul li {
+  margin: 10px 0;
+  font-size: 15px;
+}
+
+
+.disabled {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+
+.card button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.card button:hover {
+  background: #e05500;
+}
+
+/* Page Programme */
+
+.programme-page section.top-page {
+    background: none;
+    position: relative;
+    height: 50vh;
+}
+
+.programme-page section.top-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/programme.png');
+    background-size: cover;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    z-index: -1;
+}
+
+.programme-title {
+    color: white;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.title h2 {
+    font-size: 40px;
+    font-weight: 100px;
+    margin-top: 50px;
+    text-align: left;
+    padding-left: 10%;
+
+
+}
+
+.h2 .color {
+     background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.programme-sub {
+   display: flex;              
+    gap: 5%;
+}
+
+
+.video-container {
+   padding-left: 10%;
+}
+.video-container iframe {
+   width: 400px;   
+    height: 225px;  
+
+}
+.box {
+    width: 600px;
+
+}
+.description-vid span{
+    font-weight: 600;
+}
+ul li {
+  line-height: 2; 
+
+}
+
+.menu-déroulant {
+    display: flex;
+}
+
