@@ -539,8 +539,61 @@ ul li {
 
 }
 
+.programmes {
+    padding-left: 10%;
+    padding-top: 5%;
+}
+
+
+.pro1 {
+    font-size: 30px;
+    font-weight: 100px;
+}
+
 .menu-déroulant {
+    width: 100%;
     display: flex;
+    gap: 1em;
+    margin: 3em auto;
+    padding-left: 1em;
+
+    overflow-x: auto;              /* scroll horizontal */
+    scroll-behavior: smooth;       /* scroll fluide */
+    -webkit-overflow-scrolling: touch; /* effet iPhone */
+
+    box-sizing: border-box;
+    scrollbar-width: none;         /* Firefox */
+    cursor: grab;
+}
+
+.menu-déroulant.dragging {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.menu-déroulant::-webkit-scrollbar {
+    display: none;                 /* Chrome / Safari */
+}
+
+
+
+.menu-déroulant .card1 {
+    flex: 0 0 20em;
+    height: 12em;
+    padding: 1.5em;
+    border-radius: 2em;
+
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+
+    scroll-snap-align: start; /* optionnel si tu veux un effet snap */
+}
+.card1:hover {
+    background: 
+    linear-gradient(white, white) padding-box,
+    linear-gradient(90deg, #FFD700, #FFB700, #FFD700) border-box;
 }
 
 
@@ -559,19 +612,6 @@ header.header {
 }
 
 header.header img { width: 250px; }
-
-nav.nav {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-nav.nav li a {
-    color: white; /* Changé en blanc pour être lisible sur l'image */
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-}
 
 
 .login-hero {
@@ -681,3 +721,5 @@ nav.nav li a {
     text-decoration: none;
     font-weight: bold;
 }
+
+
