@@ -24,7 +24,7 @@
     <section class="login-hero">
         <div class="form-box">
             <h1>Se connecter</h1>
-            <form action="traitement.php" method="POST">
+            <form id="loginForm">
                 <div class="input-group">
                     <i class="fas fa-envelope"></i>
                     <input type="email" name="email" placeholder="Email" required>
@@ -33,6 +33,7 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" placeholder="Mot de passe" required>
                 </div>
+                <p id="errorMessage" style="color: red; font-size: 0.8rem; margin-bottom: 10px; display: none; font-weight: bold; text-align: center; width: 100%;">Identifiants incorrects !</p>
                 <button type="submit" class="btn-submit">Entrer dans la salle</button>
                 <p class="switch-form">Pas encore membre ? <a href="inscription.html">Inscris-toi ici</a></p>
             </form>
@@ -42,6 +43,28 @@
     <footer>
         <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
     </footer>
+
+    <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const errorMsg = document.getElementById('errorMessage');
+
+        const userTest = "johanfdr@icloud.com";
+        const passTest = "1234";
+
+        if (email === userTest && password === passTest) {
+            window.location.href = "moncompte.html";
+        } else {
+            errorMsg.style.display = "block";
+            const box = document.querySelector('.form-box');
+            box.style.animation = "shake 0.5s";
+            setTimeout(() => box.style.animation = "", 500);
+        }
+    });
+</script>
 
 </body>
 </html>

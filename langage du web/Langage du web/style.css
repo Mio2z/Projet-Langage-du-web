@@ -641,10 +641,10 @@ nav.nav li a {
    flex: 1;
    background: transparent;
    border: none;
-   color: white;
    font-size: 1rem;
    outline: none;
    padding:10px 0;
+   color: black;
 }
 
 .input-group input:focus {
