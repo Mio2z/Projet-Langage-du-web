@@ -1,30 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Connexion - MUSCLEFIT</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
-<body>
-    <section class="top-page"> 
-                <header class="header">
-            <img src="images/logo.png" alt="Logo du site" class="logo">
-            <nav class="nav">
-                <li><a href="Muscle fit V2.html">Accueil</a> </li> 
-                <li> <a href="tarifs.html"> Tarifs </a></li>
-                <li><a href="programme.html"> Programme </a></li>
-                <li> <a href="moncompte.html"> Mon compte </a></li>
-                <li><a href="aide.html"> Aide</a></li>
-                <li><a class="active" href="connexion.html"> Connexion</a></li>
-            </nav>
-            </header>
-        </section>
-<footer>
-    <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
-    <a href="Conditions générales de vente" class="cgv"></a>
-</footer>
+<body class="login-page-body">
+
+    <header class="header">
+        <img src="images/logo.png" alt="Logo du site" class="logo">
+        <nav class="nav">
+            <li><a href="Muscle fit V2.html">Accueil</a></li> 
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="programme.html">Programme</a></li>
+            <li><a href="moncompte.html">Mon compte</a></li>
+            <li><a href="aide.html">Aide</a></li>
+            <li><a class="active" href="connexion.html">Connexion</a></li>
+        </nav>
+    </header>
+
+    <section class="login-hero">
+        <div class="form-box">
+            <h1>Se connecter</h1>
+            <form action="traitement.php" method="POST">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Mot de passe" required>
+                </div>
+                <button type="submit" class="btn-submit">Entrer dans la salle</button>
+                <p class="switch-form">Pas encore membre ? <a href="inscription.html">Inscris-toi ici</a></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
+    </footer>
 
 </body>
 </html>
