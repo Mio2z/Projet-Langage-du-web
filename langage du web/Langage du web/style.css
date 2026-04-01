@@ -225,7 +225,7 @@ nav.nav li a.active::after {
 
 
 .best-products {
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     min-height: 500px;
     display: flex;
     flex-wrap: wrap;
@@ -552,45 +552,5 @@ ul li {
 .menu-déroulant {
     width: 100%;
     display: flex;
-    gap: 1em;
-    margin: 3em auto;
-    padding-left: 1em;
-
-    overflow-x: auto;              /* scroll horizontal */
-    scroll-behavior: smooth;       /* scroll fluide */
-    -webkit-overflow-scrolling: touch; /* effet iPhone */
-
-    box-sizing: border-box;
-    scrollbar-width: none;         /* Firefox */
-    cursor: grab;
 }
 
-.menu-déroulant.dragging {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-}
-
-.menu-déroulant::-webkit-scrollbar {
-    display: none;                 /* Chrome / Safari */
-}
-
-
-
-.menu-déroulant .card1 {
-    flex: 0 0 20em;
-    height: 12em;
-    padding: 1.5em;
-    border-radius: 2em;
-
-    border: 1px solid rgba(0,0,0,0.1);
-    background: white;
-
-    scroll-snap-align: start; /* optionnel si tu veux un effet snap */
-}
-.card1:hover {
-    background: 
-    linear-gradient(white, white) padding-box,
-    linear-gradient(90deg, #FFD700, #FFB700, #FFD700) border-box;
-}
