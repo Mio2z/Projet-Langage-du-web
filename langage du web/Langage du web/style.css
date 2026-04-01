@@ -118,7 +118,7 @@ nav.nav li {
 
 
 .best-products {
-    background-color: red;
+    background-color: rgb(255, 0, 0);
     min-height: 500px;
     display: flex;
     flex-wrap: wrap;
