@@ -56,6 +56,8 @@
         const passTest = "1234";
 
         if (email === userTest && password === passTest) {
+            sessionStorage.setItem("isLoggedIn", "true");
+            sessionStorage.setItem("userEmail", email);
             window.location.href = "moncompte.html";
         } else {
             errorMsg.style.display = "block";
