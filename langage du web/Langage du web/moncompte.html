@@ -21,6 +21,58 @@
             </nav>
             </header>
         </section>
+
+        <section class="account-container">
+    <div id="loggedOutView" class="view-box" style="display: none;">
+        <h2>Oups ! Accès restreint.</h2>
+        <p>Vous devez être membre pour voir votre bilan et réserver des cours.</p>
+        <a href="connexion.html" class="btn-gold">Aller à la connexion</a>
+    </div>
+
+    <div id="loggedInView" class="view-box" style="display: none;">
+        <h1>Salut, <span id="userName" style="color: #FFD700;">Athlète</span> !</h1>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Bilan du Jour</h3>
+                <p>Séance : Jambes / Cardio</p>
+                <small>Intensité : Haute</small>
+            </div>
+            <div class="stat-card">
+                <h3>Passages ce mois</h3>
+                <p><span class="gold-text">14</span> séances</p>
+            </div>
+        </div>
+
+        <div class="reservation-section">
+            <h3>Réserver un cours</h3>
+            <select id="courseSelect">
+                <option>Crossfit - 18h00</option>
+                <option>Haltérophilie - 19h30</option>
+                <option>Yoga Récup - 10h00</option>
+            </select>
+            <button class="btn-gold">Réserver ma place</button>
+        </div>
+
+        <button onclick="logout()" class="btn-logout">Se déconnecter</button>
+    </div>
+</section>
+
+<script>
+    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+        document.getElementById("loggedInView").style.display = "block";
+        document.getElementById("userName").innerText = sessionStorage.getItem("userEmail").split('@')[0];
+    } else {
+        document.getElementById("loggedOutView").style.display = "block";
+    }
+
+    function logout() {
+        sessionStorage.clear();
+        window.location.reload();
+    }
+</script>
 <footer>
     <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
     <a href="Conditions générales de vente" class="cgv"></a>
