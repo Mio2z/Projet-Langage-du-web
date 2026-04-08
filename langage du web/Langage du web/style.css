@@ -856,3 +856,102 @@ header.header img { width: 250px; }
 
 
 
+/* --- NOTIFICATIONS --- */
+.toast-notification {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-left: 6px solid #FFD700;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 10000;
+    overflow: hidden;
+}
+.toast-notification.active { transform: translateX(0%); }
+.toast-content { display: flex; align-items: center; }
+.toast-content i {
+    height: 35px; width: 35px; background: #FFD700;
+    color: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+}
+.toast-content .message { display: flex; flex-direction: column; margin: 0 20px; }
+.message .text-1 { font-weight: 600; color: #000; }
+.message .text-2 { font-size: 14px; color: #333; }
+.toast-notification .progress {
+    position: absolute; bottom: 0; left: 0; height: 3px; width: 100%; background: #ddd;
+}
+.toast-notification .progress:before {
+    content: ''; position: absolute; bottom: 0; right: 0; height: 100%; width: 100%; background: #FFD700;
+}
+.active .progress:before { animation: progress 3s linear forwards; }
+@keyframes progress { 100% { right: 100%; } }
+
+/* --- EMPLOI DU TEMPS --- */
+.schedule-section {
+    margin: 30px 0;
+    background: #111;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+.day-col {
+    background: #1a1a1a;
+    padding: 15px 5px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+.day-name { display: block; color: #FFD700; font-weight: bold; margin-bottom: 5px; }
+.day-col small { color: #888; font-size: 0.85em; }
+.day-col.today { border: 1px solid #FFD700; background: #222; }
+.booked-text { color: #fff !important; font-weight: bold; }
+
+/* Animation flash quand on réserve */
+.updated { animation: flashUpdate 0.8s; }
+@keyframes flashUpdate {
+    0% { background: #FFD700; }
+    100% { background: #1a1a1a; }
+}
+
+/* --- FORMULAIRE DE RÉSERVATION --- */
+.booking-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+select {
+    padding: 10px;
+    border-radius: 5px;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+}
+.btn-gold {
+    background: #FFD700;
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-gold:hover { transform: scale(1.05); background: #ffcc00; }
+
+.btn-logout {
+    background: none; border: 1px solid #ff4444; color: #ff4444;
+    padding: 8px 15px; border-radius: 5px; cursor: pointer; margin-top: 20px;
+}
+#userName { color: #FFD700; font-weight: bold; }

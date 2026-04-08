@@ -1,103 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MuscleFit - Mon Compte</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body class="programme-page">
+
+    <div id="customToast" class="toast-notification">
+        <div class="toast-content">
+            <i class="fas fa-check"></i>
+            <div class="message">
+                <span class="text text-1">C'est validé !</span>
+                <span id="toastMessage" class="text text-2"></span>
+            </div>
+        </div>
+        <div class="progress"></div>
+    </div>
+
     <section class="top-page"> 
-                <header class="header">
+        <header class="header">
             <img src="images/logo.png" alt="Logo du site" class="logo">
             <nav class="nav">
-                <li><a href="Muscle fit V2.html">Accueil</a> </li> 
-                <li> <a href="tarifs.html"> Tarifs </a></li>
-                <li><a href="programme.html"> Programme </a></li>
-                <li> <a class="active" href="moncompte.html"> Mon compte </a></li>
-                <li><a href="aide.html"> Aide</a></li>
-                <li><a href="connexion.html"> Connexion</a></li>
+                <li><a href="Muscle fit V2.html">Accueil</a></li> 
+                <li><a href="tarifs.html">Tarifs</a></li>
+                <li><a href="programme.html">Programme</a></li>
+                <li><a class="active" href="moncompte.html">Mon compte</a></li>
+                <li><a href="aide.html">Aide</a></li>
+                <li><a href="connexion.html">Connexion</a></li>
             </nav>
-            </header>
-             <h1 class="programme-title">MON COMPTE</h1>
-        </section>
+        </header>
+        <h1 class="programme-title">MON COMPTE</h1>
+    </section>
 
-        <section class="account-container">
-    <div id="loggedOutView" class="view-box" style="display: none;">
-        <h2>Oups ! Accès restreint.</h2>
-        <p>Vous devez être membre pour voir votre bilan et réserver des cours.</p>
-        <a href="connexion.html" class="btn-gold">Aller à la connexion</a>
-    </div>
-
-    <div id="loggedInView" class="view-box" style="display: none;">
-        <h1>Salut, <span id="userName" style="color: #FFD700;">Athlète</span> !</h1>
-        
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>Bilan du Jour</h3>
-                <p>Séance : Jambes / Cardio</p>
-                <small>Intensité : Haute</small>
-            </div>
-            <div class="stat-card">
-                <h3>Passages ce mois</h3>
-                <p><span class="gold-text">14</span> séances</p>
-            </div>
+    <section class="account-container">
+        <div id="loggedOutView" class="view-box" style="display: none;">
+            <h2>Oups ! Accès restreint.</h2>
+            <p>Vous devez être membre pour voir votre bilan et réserver des cours.</p>
+            <a href="connexion.html" class="btn-gold">Aller à la connexion</a>
         </div>
 
-        <div class="reservation-section">
-            <h3>Réserver un cours</h3>
-            <select id="courseSelect">
-                <option>Crossfit - 18h00</option>
-                <option>Haltérophilie - 19h30</option>
-                <option>Yoga Récup - 10h00</option>
-                <option>Récupération - 15h00    </option>
-                <option>MetCon - 17h00</option>
-                <option>Mobilité - 16h00</option>
-                <option>Pilates - 14h00</option>
-                <option>Endurance Cardio - 13h00</option>
+        <div id="loggedInView" class="view-box" style="display: none;">
+            <h1>Salut, <span id="userName">Athlète</span> !</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Bilan du Jour</h3>
+                    <p>Séance : Jambes / Cardio</p>
+                    <small>Intensité : Haute</small>
+                </div>
+                <div class="stat-card">
+                    <h3>Passages ce mois</h3>
+                    <p><span class="gold-text">14</span> séances</p>
+                </div>
+            </div>
 
-            </select>
-            <button class="btn-gold">Réserver ma place</button>
+            <div class="schedule-section">
+                <h3><i class="fas fa-calendar-alt"></i> Mon Planning Hebdomadaire</h3>
+                <div class="schedule-grid">
+                    <div class="day-col" id="day-LUN"><span class="day-name">LUN</span><small id="slot-LUN">Repos</small></div>
+                    <div class="day-col" id="day-MAR"><span class="day-name">MAR</span><small id="slot-MAR">Repos</small></div>
+                    <div class="day-col today" id="day-MER"><span class="day-name">MER</span><small id="slot-MER">Aujourd'hui</small></div>
+                    <div class="day-col" id="day-JEU"><span class="day-name">JEU</span><small id="slot-JEU">Repos</small></div>
+                    <div class="day-col" id="day-VEN"><span class="day-name">VEN</span><small id="slot-VEN">Repos</small></div>
+                    <div class="day-col" id="day-SAM"><span class="day-name">SAM</span><small id="slot-SAM">Repos</small></div>
+                    <div class="day-col" id="day-DIM"><span class="day-name">DIM</span><small id="slot-DIM">Repos</small></div>
+                </div>
+            </div>
+
+            <div class="reservation-section">
+                <h3>Réserver un cours</h3>
+                <div class="booking-controls">
+                    <select id="daySelect">
+                        <option value="LUN">Lundi</option>
+                        <option value="MAR">Mardi</option>
+                        <option value="MER" selected>Mercredi</option>
+                        <option value="JEU">Jeudi</option>
+                        <option value="VEN">Vendredi</option>
+                        <option value="SAM">Samedi</option>
+                        <option value="DIM">Dimanche</option>
+                    </select>
+                    <select id="courseSelect">
+                        <option>Crossfit - 18h00</option>
+                        <option>Haltérophilie - 19h30</option>
+                        <option>Yoga Récup - 10h00</option>
+                        <option>MetCon - 17h00</option>
+                        <option>Mobilité - 16h00</option>
+                    </select>
+                </div>
+                <button class="btn-gold" onclick="validerReservation()">Réserver ma place</button>
+            </div>
+
+            <button onclick="logout()" class="btn-logout">Se déconnecter</button>
         </div>
+    </section>
 
-        <button onclick="logout()" class="btn-logout">Se déconnecter</button>
-    </div>
-</section>
+    <footer>
+        <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
+    </footer>
 
-<script>
-    const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+    <script>
+        // Logique de session
+        const isLoggedIn = sessionStorage.getItem("isLoggedIn");
+        if (isLoggedIn === "true") {
+            document.getElementById("loggedInView").style.display = "block";
+            const userEmail = sessionStorage.getItem("userEmail");
+            if(userEmail) { document.getElementById("userName").innerText = userEmail.split('@')[0]; }
+        } else {
+            document.getElementById("loggedOutView").style.display = "block";
+        }
 
-    if (isLoggedIn === "true") {
-        document.getElementById("loggedInView").style.display = "block";
-        document.getElementById("userName").innerText = sessionStorage.getItem("userEmail").split('@')[0];
-    } else {
-        document.getElementById("loggedOutView").style.display = "block";
-    }
+        function logout() {
+            sessionStorage.clear();
+            window.location.reload();
+        }
 
-    function logout() {
-        sessionStorage.clear();
-        window.location.reload();
-    }
-</script>
-<div class="carousel">
-    <div class="group">
-        <div class="card3">Hydrate-toi avant et après chaque séance.</div>
-        <div class="card3">Priorise la technique avant la charge.</div>
-        <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
-        <div class="card3">- Le repos fait partie de l'entraînement  -</div>
-        <div class="card3">Hydrate-toi avant et après chaque séance.</div>
-        <div class="card3">Priorise la technique avant la charge.</div>
-        <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
-        <div class="card3">- Le repos fait partie de l'entraînement.</div>
-    </div>
-</div>
+        // Logique d'interaction Planning + Toast
+        function validerReservation() {
+            const jour = document.getElementById("daySelect").value;
+            const cours = document.getElementById("courseSelect").value;
+            
+            // Mise à jour de l'emploi du temps
+            const slot = document.getElementById("slot-" + jour);
+            const parentCol = document.getElementById("day-" + jour);
+            
+            slot.innerText = cours;
+            slot.classList.add("booked-text");
+            
+            // Petit effet visuel sur la colonne
+            parentCol.classList.add("updated");
+            setTimeout(() => parentCol.classList.remove("updated"), 800);
 
-
-<footer>
-    <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
-    <a href="Conditions générales de vente" class="cgv"></a>
-</footer>
-
+            // Notification
+            const toast = document.getElementById("customToast");
+            const toastMsg = document.getElementById("toastMessage");
+            toastMsg.innerText = "Ajouté au planning du " + jour;
+            toast.classList.add("active");
+            setTimeout(() => { toast.classList.remove("active"); }, 3000);
+        }
+    </script>
 </body>
 </html>
