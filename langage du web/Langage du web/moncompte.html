@@ -96,6 +96,17 @@
             <button onclick="logout()" class="btn-logout">Se déconnecter</button>
         </div>
     </section>
+</div>
+
+ <!-- Bouton d'aide -->
+<div id="mc-help-button">?</div>
+
+<!-- Panneau de chat -->
+<div id="mc-chat-panel">
+  <div id="mc-chat-header">Assistance</div>
+  <div id="mc-chat-messages"></div>
+  <input id="mc-chat-input" type="text" placeholder="Écris ton message..." />
+</div>
 
     <footer>
         <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
@@ -141,7 +152,8 @@
             setTimeout(() => { toast.classList.remove("active"); }, 3000);
         }
     </script>
-</body>
-</html>
+
+    
+    <script src="script.js"></script>
 </body>
 </html>

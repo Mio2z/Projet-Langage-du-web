@@ -856,6 +856,93 @@ header.header img { width: 250px; }
 
 
 /* === MIARO CHATBOT WIDGET === */
+/* === MIARO CHATBOT WIDGET === */
+
+#mc-help-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 999999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+#mc-chat-panel {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 350px;
+  height: 100vh;
+  background: #f7f7f7;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  transition: right 0.3s ease;
+  z-index: 999998;
+}
+
+#mc-chat-panel.mc-open {
+  right: 0;
+}
+
+#mc-chat-header {
+  padding: 15px;
+  background: #000;
+  color: white;
+  font-weight: bold;
+}
+
+#mc-chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+/* Messages */
+.mc-message {
+  margin-bottom: 8px;
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+.mc-message.mc-user {
+  text-align: right;
+}
+
+.mc-message.mc-user span {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 12px 12px 0 12px;
+}
+
+.mc-message.mc-ai span {
+  display: inline-block;
+  background: #e0e0e0;
+  color: #000;
+  padding: 6px 10px;
+  border-radius: 12px 12px 12px 0;
+}
+
+#mc-chat-input {
+  border: none;
+  border-top: 1px solid #ddd;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
 
 /* --- NOTIFICATIONS --- */
 .toast-notification {
