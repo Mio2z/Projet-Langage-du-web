@@ -37,5 +37,5 @@ function mcAddMessage(sender, text) {
 
 // Faux chatbot
 async function mcFakeAI(message) {
-  return "Tu as dit : « " + message + " ». (Réponse de test)";
+  return "Cette fonctionnalité est toujours en test de développement. Nous avons envoyé votre message « " + message + " » aux développeurs pour qu'ils puissent l'analyser et améliorer le chatbot. Merci de votre compréhension !";
 }
