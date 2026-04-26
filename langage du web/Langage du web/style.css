@@ -366,8 +366,7 @@ footer a.cgv{
     color: black;
 }
 
-/* page des tarifs */
-
+/* tarifs */
 
 .tarifs {
   display: flex;              
@@ -405,7 +404,7 @@ footer a.cgv{
   text-align: center;
   font-size: 22px;
   font-weight: bold;
-  background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
+  background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); 
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -507,7 +506,7 @@ footer a.cgv{
 }
 
 .h2 .color {
-     background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); /*trouver sur internet cette couleur*/
+     background: linear-gradient(90deg, #FFD700, #FFB700, #FFD700); 
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -557,12 +556,12 @@ ul li {
     margin: 3em auto;
     padding-left: 1em;
 
-    overflow-x: auto;              /* scroll horizontal */
-    scroll-behavior: smooth;       /* scroll fluide */
-    -webkit-overflow-scrolling: touch; /* effet iPhone */
+    overflow-x: auto;             
+    scroll-behavior: smooth;      
+    -webkit-overflow-scrolling: touch; 
 
     box-sizing: border-box;
-    scrollbar-width: none;         /* Firefox */
+    scrollbar-width: none;         
     cursor: grab;
 }
 
@@ -575,7 +574,7 @@ ul li {
 
 
 .menu-déroulant::-webkit-scrollbar {
-    display: none;                 /* Chrome / Safari */
+    display: none;                 
 }
 
 .carousel {
@@ -623,12 +622,12 @@ ul li {
 .card1 .btn {
     width: 100%;
     padding: 0.7em 1em;
-    border-radius: 999px; /* rect arrondi style iOS */
+    border-radius: 999px;
     border: 1px solid transparent;
     background:
         linear-gradient(white, white) padding-box,
         linear-gradient(90deg, #FFD700, #FFB700, #FFD700) border-box;
-    color: #C89A00; /* or doux */
+    color: #C89A00; 
     font-size: 0.9em;
     font-weight: 500;
     text-align: center;
@@ -706,12 +705,12 @@ header.header img { width: 250px; }
     max-width: 400px;
     margin: 0 auto;
     
-    /* LA BORDURE DORÉE FINE ET ARRONDIE */
+ 
     border: 2px solid transparent; 
     background-image: linear-gradient(white, white), 
                       linear-gradient(90deg, #FFD700, #FFB700, #FFD700);
     background-origin: border-box;
-    background-clip: padding-box, border-box; /* On utilise padding-box ici */
+    background-clip: padding-box, border-box; 
     
     display: flex;
     flex-direction: column;
@@ -855,8 +854,7 @@ header.header img { width: 250px; }
 }
 
 
-/* === MIARO CHATBOT WIDGET === */
-/* === MIARO CHATBOT WIDGET === */
+/*chatbot */
 
 #mc-help-button {
   position: fixed;
@@ -908,7 +906,7 @@ header.header img { width: 250px; }
   font-size: 14px;
 }
 
-/* Messages */
+/* messages */
 .mc-message {
   margin-bottom: 8px;
   max-width: 90%;
@@ -944,7 +942,7 @@ header.header img { width: 250px; }
   background: #fff;
 }
 
-/* --- NOTIFICATIONS --- */
+/* pop up cote*/
 .toast-notification {
     position: fixed;
     top: 25px;
@@ -978,7 +976,7 @@ header.header img { width: 250px; }
 .active .progress:before { animation: progress 3s linear forwards; }
 @keyframes progress { 100% { right: 100%; } }
 
-/* --- EMPLOI DU TEMPS --- */
+/* agenda */
 .schedule-section {
     margin: 30px 0;
     background: #111;
@@ -1005,14 +1003,14 @@ header.header img { width: 250px; }
 .day-col.today { border: 1px solid #FFD700; background: #222; }
 .booked-text { color: #fff !important; font-weight: bold; }
 
-/* Animation flash quand on réserve */
+/* pop up effet*/
 .updated { animation: flashUpdate 0.8s; }
 @keyframes flashUpdate {
     0% { background: #FFD700; }
     100% { background: #1a1a1a; }
 }
 
-/* --- FORMULAIRE DE RÉSERVATION --- */
+/* les différents cours*/
 .booking-controls {
     display: flex;
     gap: 10px;
@@ -1045,7 +1043,7 @@ select {
 #userName { color: #FFD700; font-weight: bold; }
 
 
-/* --- SECTION BOUTIQUE --- */
+/* la boutique */
 .shop-container {
     padding: 80px 10%;
     background-color: #f4f4f4;
@@ -1069,7 +1067,7 @@ select {
 
 .product-card:hover {
     transform: translateY(-10px);
-    border-color: #FFD700; /* Ta couleur dorée */
+    border-color: #FFD700; 
 }
 
 .product-img-box {
@@ -1129,7 +1127,7 @@ select {
     color: #000;
 }
 
-/* Container de la boutique */
+
 .shop-container {
     padding: 60px 10%;
     background-color: #111;
@@ -1143,14 +1141,14 @@ select {
     text-transform: uppercase;
 }
 
-/* La Grille */
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
 }
 
-/* La Carte Produit */
+
 .product-card {
     background: #1a1a1a;
     border-radius: 15px;
@@ -1165,7 +1163,7 @@ select {
     box-shadow: 0 15px 30px rgba(255, 204, 0, 0.1);
 }
 
-/* Image du produit */
+
 .product-img-box {
     background: #222;
     height: 220px;
@@ -1185,7 +1183,7 @@ select {
     transform: scale(1.15) rotate(5deg);
 }
 
-/* Badge (Nouveau, Populaire) */
+
 .badge {
     position: absolute;
     top: 15px;
@@ -1199,7 +1197,7 @@ select {
     z-index: 2;
 }
 
-/* Détails */
+
 .product-details {
     padding: 20px;
 }
@@ -1216,7 +1214,7 @@ select {
     margin-bottom: 15px;
 }
 
-/* Prix et Bouton */
+
 .price-row {
     display: flex;
     justify-content: space-between;
@@ -1248,7 +1246,7 @@ select {
 }
 
 
-/* Page de succès de paiement */
+
 .payment-success-body {
     display: flex;
     flex-direction: column;

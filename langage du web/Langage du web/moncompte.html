@@ -159,7 +159,7 @@
                     if (user.est_abonne === true) {
                         document.getElementById("loggedInView").style.display = "block";
                         
-                        // Charger les séances
+                      
                         const { count } = await supabaseClient
                             .from('seances')
                             .select('*', { count: 'exact', head: true })
@@ -177,7 +177,7 @@
             }
         }
 
-        // MISE À JOUR DU PROFIL
+        
         async function mettreAJourProfil() {
             const nouveauNom = document.getElementById('editNom').value;
             const nouvelObjectif = document.getElementById('editObjectif').value;
@@ -193,11 +193,11 @@
 
                 if (error) throw error;
 
-                // Actualisation visuelle immédiate
+             
                 document.querySelectorAll(".u-name").forEach(el => el.innerText = nouveauNom);
                 document.getElementById('displayObjectif').innerText = "Objectif : " + (nouvelObjectif || "Non défini");
 
-                // Succès Toast
+               
                 const toast = document.getElementById("customToast");
                 document.getElementById("toastMessage").innerText = "Profil mis à jour !";
                 toast.classList.add("active");

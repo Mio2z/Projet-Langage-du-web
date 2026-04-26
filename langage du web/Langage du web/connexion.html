@@ -83,16 +83,16 @@
                     .maybeSingle();
 
                 if (utilisateur) {
-                    // --- ÉTAPE SUCCÈS ---
-                    // On enregistre les infos dans le navigateur pour les autres pages
+                    
+
                     sessionStorage.setItem("isLoggedIn", "true");
-                    sessionStorage.setItem("userEmail", utilisateur.email); // Crucial pour compter les séances
+                    sessionStorage.setItem("userEmail", utilisateur.email); 
                     sessionStorage.setItem("userName", utilisateur.nom);
                     
-                    // On redirige vers l'espace membre
+                   
                     window.location.href = "moncompte.html";
                 } else {
-                    // --- ÉTAPE ÉCHEC ---
+                    
                     afficherErreur(errorMsg, box);
                 }
             } catch (err) {

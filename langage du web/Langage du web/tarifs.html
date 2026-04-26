@@ -93,12 +93,12 @@
     </footer>
 
     <script>
-        // 1. CONFIGURATION SUPABASE
+      
         const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // 2. FONCTION D'ACHAT
+      
         async function acheterAbonnement(nomDuPlan) {
             const userEmail = sessionStorage.getItem("userEmail");
 
@@ -109,12 +109,12 @@
                 return;
             }
 
-            // Fenêtre de confirmation
+            
             const confirmation = confirm("Voulez-vous activer l'abonnement " + nomDuPlan + " ?");
             
             if (confirmation) {
                 try {
-                    // MISE À JOUR DANS LA TABLE UTILISATEURS
+                   
                     const { error } = await supabaseClient
                         .from('utilisateurs')
                         .update({ est_abonne: true }) // On change le statut en vrai

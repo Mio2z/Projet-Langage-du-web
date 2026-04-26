@@ -45,12 +45,12 @@
     </section>
 
     <script>
-        // CONFIGURATION SUPABASE (À REMPLACER)
+       
         const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co"; 
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U"; 
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // LOGIQUE D'ENVOI
+       
         document.getElementById('signupForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -59,7 +59,7 @@
             const mdp = document.getElementById('signupPassword').value;
 
             const { data, error } = await supabaseClient
-                .from('utilisateurs') // Ta table dans Supabase
+                .from('utilisateurs') 
                 .insert([{ nom: nom, email: email, mot_de_passe: mdp }]);
 
             if (error) {

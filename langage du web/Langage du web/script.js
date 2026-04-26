@@ -3,12 +3,12 @@ const mcChatPanel = document.getElementById("mc-chat-panel");
 const mcChatInput = document.getElementById("mc-chat-input");
 const mcChatMessages = document.getElementById("mc-chat-messages");
 
-// Ouvrir / fermer
+
 mcHelpButton.addEventListener("click", () => {
   mcChatPanel.classList.toggle("mc-open");
 });
 
-// Envoi message
+
 mcChatInput.addEventListener("keydown", async (e) => {
   if (e.key === "Enter" && mcChatInput.value.trim() !== "") {
     const userMessage = mcChatInput.value.trim();
@@ -16,13 +16,13 @@ mcChatInput.addEventListener("keydown", async (e) => {
 
     mcAddMessage("mc-user", userMessage);
 
-    // IA factice
+   
     const response = await mcFakeAI(userMessage);
     mcAddMessage("mc-ai", response);
   }
 });
 
-// Ajouter message
+
 function mcAddMessage(sender, text) {
   const wrapper = document.createElement("div");
   wrapper.className = `mc-message ${sender}`;
@@ -35,7 +35,7 @@ function mcAddMessage(sender, text) {
   mcChatMessages.scrollTop = mcChatMessages.scrollHeight;
 }
 
-// Faux chatbot
+
 async function mcFakeAI(message) {
   return "Cette fonctionnalité est toujours en test de développement. Nous avons envoyé votre message « " + message + " » aux développeurs pour qu'ils puissent l'analyser et améliorer le chatbot. Merci de votre compréhension !";
 }

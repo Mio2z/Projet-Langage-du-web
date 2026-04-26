@@ -43,10 +43,10 @@
     </footer>
 
     <script>
-        // On récupère le nom stocké lors de la connexion
+        
         const userNom = sessionStorage.getItem("userName");
         
-        // Si un nom existe, on remplace le texte "Athlète" par le vrai nom
+        
         if (userNom) {
             document.querySelector(".u-name").innerText = userNom;
         }
