@@ -1045,65 +1045,86 @@ select {
 #userName { color: #FFD700; font-weight: bold; }
 
 
-/* Style Boutique */
+/* --- SECTION BOUTIQUE --- */
 .shop-container {
-    padding: 50px 10%;
-    background: #f9f9f9;
+    padding: 80px 10%;
+    background-color: #f4f4f4;
 }
 
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    margin-top: 50px;
 }
 
-/* Sidebar Panier */
-.cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -400px; /* Caché par défaut */
-    width: 350px;
-    height: 100vh;
+.product-card {
     background: white;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
-    transition: 0.4s;
-    z-index: 2000;
-    padding: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    border-color: #FFD700; /* Ta couleur dorée */
+}
+
+.product-img-box {
+    height: 250px;
     display: flex;
-    flex-direction: column;
-}
-
-.cart-sidebar.active {
-    right: 0;
-}
-
-.cart-icon {
-    position: relative;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: black;
-    margin-left: 20px;
-}
-
-#cart-count {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background: #FFD700;
-    color: black;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.cart-item {
-    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    padding: 20px;
+    background: #fff;
 }
 
-.cart-item img { width: 50px; border-radius: 5px; }
+.product-img-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.product-details {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.product-details p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.price-tag {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.btn-buy {
+    display: block;
+    padding: 12px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-buy:hover {
+    background: #FFD700;
+    color: #000;
+}

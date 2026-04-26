@@ -10,65 +10,78 @@
 <body class="programme-page">
 
     <header class="header">
-        <img src="images/logo.png" alt="Logo" class="logo">
+        <img src="images/logo.png" alt="Logo du site" class="logo">
         <nav class="nav">
-            <li><a href="Muscle fit V2.html">Accueil</a></li>
+            <li><a href="Muscle fit V2.html">Accueil</a></li> 
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="programme.html">Programme</a></li>
             <li><a class="active" href="boutique.html">Boutique</a></li>
             <li><a href="moncompte.html">Mon compte</a></li>
             <li><a href="connexion.html">Connexion</a></li>
-            <li><a href="boutique.html">Boutique</a></li>
         </nav>
-        <div class="cart-icon" onclick="toggleCart()">
-            <i class="fas fa-shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </div>
     </header>
 
-    <section class="top-page">
-        <h1 class="programme-title">BOUTIQUE ACCESSOIRES</h1>
+    <section class="top-page"> 
+        <h1 class="programme-title">BOUTIQUE MUSCLEFIT</h1>
     </section>
 
     <section class="shop-container">
+        <h2 class="section-title">Nos Compléments & Accessoires</h2>
+        
         <div class="product-grid">
-            <div class="card1">
-                <img src="images/creatine.png" alt="Créatine">
-                <h3>Créatine Pure</h3>
-                <p>Améliore la force et la récupération.</p>
-                <p class="gold-text">24,99€</p>
-                <button class="btn-gold" onclick="addToCart('Créatine', 24.99, 'images/creatine.png')">Ajouter au panier</button>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="images/creatine.png" alt="Créatine">
+                </div>
+                <div class="product-details">
+                    <h3>Créatine Monohydrate</h3>
+                    <p>Force et explosion musculaire</p>
+                    <span class="price-tag">24,99€</span>
+                    <a href="contact.html" class="btn-buy">Commander</a>
+                </div>
             </div>
 
-            <div class="card1">
-                <img src="images/whey.png" alt="Whey">
-                <h3>Whey Protéine</h3>
-                <p>Idéal pour la construction musculaire.</p>
-                <p class="gold-text">29,99€</p>
-                <button class="btn-gold" onclick="addToCart('Whey', 29.99, 'images/whey.png')">Ajouter au panier</button>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="images/whey.png" alt="Whey">
+                </div>
+                <div class="product-details">
+                    <h3>Whey Isolate</h3>
+                    <p>Construction musculaire rapide</p>
+                    <span class="price-tag">29,99€</span>
+                    <a href="contact.html" class="btn-buy">Commander</a>
+                </div>
             </div>
 
-            <div class="card1">
-                <img src="images/elastique.png" alt="Élastique">
-                <h3>Kit Élastiques</h3>
-                <p>Entraîne-toi n'importe où.</p>
-                <p class="gold-text">19,99€</p>
-                <button class="btn-gold" onclick="addToCart('Élastiques', 19.99, 'images/elastique.png')">Ajouter au panier</button>
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="images/elastique.png" alt="Elastique">
+                </div>
+                <div class="product-details">
+                    <h3>Bandes de résistance</h3>
+                    <p>Set de 3 intensités</p>
+                    <span class="price-tag">19,99€</span>
+                    <a href="contact.html" class="btn-buy">Commander</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="images/gourde.png" alt="Gourde">
+                </div>
+                <div class="product-details">
+                    <h3>Gourde XL</h3>
+                    <p>Capacité 2.2L - Sans BPA</p>
+                    <span class="price-tag">14,99€</span>
+                    <a href="contact.html" class="btn-buy">Commander</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <div id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h2>Ton Panier</h2>
-            <i class="fas fa-times" onclick="toggleCart()" style="cursor:pointer"></i>
-        </div>
-        <div id="cart-items-list">
-            </div>
-        <div class="cart-footer">
-            <h3>Total: <span id="cart-total">0</span>€</h3>
-            <button class="btn-submit" onclick="checkout()">Payer ma commande</button>
-        </div>
-    </div>
+    <footer>
+        <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
+    </footer>
 
-    <script src="shop.js"></script>
 </body>
 </html>
