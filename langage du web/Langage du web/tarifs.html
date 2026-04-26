@@ -1,107 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tarifs - MUSCLEFIT</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="tarifs-page">
     <section class="top-page"> 
-                <header class="header">
+        <header class="header">
             <img src="images/logo.png" alt="Logo du site" class="logo">
             <nav class="nav">
                 <li><a href="Muscle fit V2.html">Accueil</a> </li> 
-                <li> <a class="active" href="tarifs.html"> Tarifs </a></li>
+                <li><a class="active" href="tarifs.html"> Tarifs </a></li>
                 <li><a href="programme.html"> Programme </a></li>
-                <li> <a href="moncompte.html"> Mon compte </a></li>
+                <li><a href="moncompte.html"> Mon compte </a></li>
                 <li><a href="connexion.html"> Connexion</a></li>
                 <li><a href="boutique.html">Boutique</a></li>
             </nav>
-            </header>
-            <h1 class="tarifs-title">TARIFS & ABONNEMENTS</h1>
-        </section>
+        </header>
+        <h1 class="tarifs-title">TARIFS & ABONNEMENTS</h1>
+    </section>
 
-<section class="tarifs">
+    <section class="tarifs">
         <div class="card">
-  <h3>BASIC</h3>
-  <p class="price">24,99€ / 4 semaines</p>
-  <p class="inscription">19,99€ de frais d'inscription</p>
-
-  <p class="bonus">🎁 5 jours offerts + un sac de sport</p>
-
-  <ul>
-    <li>Accès à tous les clubs de France</li>
-    <li>Accès 24h/24 et 7j/7</li>
-    <li class="disabled">Amène quelqu’un une fois par semaine</li>
-    <li class="disabled">Accès illimité aux fauteuils de massage</li>
-    <li class="disabled">Gèle ton abonnement</li>
-  </ul>
+            <h3>BASIC</h3>
+            <p class="price">24,99€ / 4 semaines</p>
+            <p class="inscription">19,99€ de frais d'inscription</p>
+            <p class="bonus">🎁 5 jours offerts + un sac de sport</p>
+            <ul>
+                <li>Accès à tous les clubs de France</li>
+                <li>Accès 24h/24 et 7j/7</li>
+                <li class="disabled">Amène quelqu’un une fois par semaine</li>
+                <li class="disabled">Accès illimité aux fauteuils de massage</li>
+                <li class="disabled">Gèle ton abonnement</li>
+            </ul>
+            <button class="btn-gold" onclick="acheterAbonnement('BASIC')">Choisir BASIC</button>
         </div>
-<div class="card">
 
+        <div class="card">
+            <h3>COMFORT</h3>
+            <p class="price">24,99€ / 4 semaines</p>
+            <p class="inscription">19,99€ de frais d'inscription</p>
+            <p class="bonus">🎁 1 semaine offertes + un sac de sport</p>
+            <ul>
+                <li>Accès à tous les clubs de France</li>
+                <li>Accès 24h/24 et 7j/7</li>
+                <li>Amène quelqu’un une fois par semaine</li>
+                <li class="disabled">Accès illimité aux fauteuils de massage</li>
+                <li class="disabled">Gèle ton abonnement</li>
+            </ul>
+            <button class="btn-gold" onclick="acheterAbonnement('COMFORT')">Choisir COMFORT</button>
+        </div>
 
-  <h3>COMFORT</h3>
-  <p class="price">24,99€ / 4 semaines</p>
-  <p class="inscription">19,99€ de frais d'inscription</p>
-
-  <p class="bonus">🎁 1 semaine offertes + un sac de sport</p>
-
-  <ul>
-    <li>Accès à tous les clubs de France</li>
-    <li>Accès 24h/24 et 7j/7</li>
-    <li >Amène quelqu’un une fois par semaine</li>
-    <li class="disabled">Accès illimité aux fauteuils de massage</li>
-    <li class="disabled">Gèle ton abonnement</li>
-  </ul>
-</div>
-<div class="card">
-
-
-  <h3>PREMIUM</h3>
-  <p class="price">24,99€ / 4 semaines</p>
-  <p class="inscription">19,99€ de frais d'inscription</p>
-
-  <p class="bonus">🎁 2 semaines offertes + un sac de sport</p>
-
-  <ul>
-    <li>Accès à tous les clubs de France</li>
-    <li>Accès 24h/24 et 7j/7</li>
-    <li >Amène quelqu’un une fois par semaine</li>
-    <li >Accès illimité aux fauteuils de massage</li>
-    <li>Gèle ton abonnement</li>
-  </ul>
-</div>
+        <div class="card">
+            <h3>PREMIUM</h3>
+            <p class="price">24,99€ / 4 semaines</p>
+            <p class="inscription">19,99€ de frais d'inscription</p>
+            <p class="bonus">🎁 2 semaines offertes + un sac de sport</p>
+            <ul>
+                <li>Accès à tous les clubs de France</li>
+                <li>Accès 24h/24 et 7j/7</li>
+                <li>Amène quelqu’un une fois par semaine</li>
+                <li>Accès illimité aux fauteuils de massage</li>
+                <li>Gèle ton abonnement</li>
+            </ul>
+            <button class="btn-gold" onclick="acheterAbonnement('PREMIUM')">Choisir PREMIUM</button>
+        </div>
     </section>
       
-<div class="carousel">
-    <div class="group">
-        <div class="card3">Hydrate-toi avant et après chaque séance.</div>
-        <div class="card3">Priorise la technique avant la charge.</div>
-        <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
-        <div class="card3">- Le repos fait partie de l'entraînement  -</div>
-        <div class="card3">Hydrate-toi avant et après chaque séance.</div>
-        <div class="card3">Priorise la technique avant la charge.</div>
-        <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
-        <div class="card3">- Le repos fait partie de l'entraînement.</div>
+    <div class="carousel">
+        <div class="group">
+            <div class="card3">Hydrate-toi avant et après chaque séance.</div>
+            <div class="card3">Priorise la technique avant la charge.</div>
+            <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
+            <div class="card3">- Le repos fait partie de l'entraînement -</div>
+        </div>
     </div>
-</div>
- <!-- Bouton d'aide -->
-<div id="mc-help-button">?</div>
 
-<!-- Panneau de chat -->
-<div id="mc-chat-panel">
-  <div id="mc-chat-header">Assistance</div>
-  <div id="mc-chat-messages"></div>
-  <input id="mc-chat-input" type="text" placeholder="Écris ton message..." />
-</div>
+    <div id="mc-help-button">?</div>
+    <div id="mc-chat-panel">
+        <div id="mc-chat-header">Assistance</div>
+        <div id="mc-chat-messages"></div>
+        <input id="mc-chat-input" type="text" placeholder="Écris ton message..." />
+    </div>
 
-<footer>
-    <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
-    <a href="Conditions générales de vente" class="cgv"></a>
-</footer>
-<script src="script.js"></script>
+    <footer>
+        <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
+    </footer>
 
+    <script>
+        // 1. CONFIGURATION SUPABASE
+        const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // 2. FONCTION D'ACHAT
+        async function acheterAbonnement(nomDuPlan) {
+            const userEmail = sessionStorage.getItem("userEmail");
+
+            // Vérifier si l'utilisateur est bien connecté
+            if (!userEmail) {
+                alert("Oups ! Tu dois être connecté pour choisir un abonnement.");
+                window.location.href = "connexion.html";
+                return;
+            }
+
+            // Fenêtre de confirmation
+            const confirmation = confirm("Voulez-vous activer l'abonnement " + nomDuPlan + " ?");
+            
+            if (confirmation) {
+                try {
+                    // MISE À JOUR DANS LA TABLE UTILISATEURS
+                    const { error } = await supabaseClient
+                        .from('utilisateurs')
+                        .update({ est_abonne: true }) // On change le statut en vrai
+                        .eq('email', userEmail);
+
+                    if (error) throw error;
+
+                    alert("Félicitations ! Ton abonnement " + nomDuPlan + " est activé. Bon entraînement !");
+                    
+                    // On redirige vers Mon Compte qui va maintenant débloquer l'accès total
+                    window.location.href = "moncompte.html";
+
+                } catch (err) {
+                    console.error("Erreur lors de l'activation :", err);
+                    alert("Une erreur est survenue lors de l'activation.");
+                }
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>

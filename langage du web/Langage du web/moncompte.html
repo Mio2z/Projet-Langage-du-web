@@ -6,6 +6,8 @@
     <title>MuscleFit - Mon Compte</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="programme-page">
 
@@ -29,7 +31,6 @@
                 <li><a href="programme.html">Programme</a></li>
                 <li><a class="active" href="moncompte.html">Mon compte</a></li>
                 <li><a href="boutique.html">Boutique</a></li>
-
                 <li><a href="connexion.html">Connexion</a></li>
             </nav>
         </header>
@@ -43,18 +44,26 @@
             <a href="connexion.html" class="btn-gold">Aller à la connexion</a>
         </div>
 
+        <div id="noAboView" class="view-box" style="display: none; text-align: center;">
+            <h1>Salut, <span class="u-name">Athlète</span> ! 🥊</h1>
+            <p style="margin-bottom: 20px;">Ton compte est créé, mais tu n'as pas encore d'abonnement actif.</p>
+            <a href="tarifs.html" class="btn-gold">Découvrir nos abonnements</a>
+            <br><br>
+            <button onclick="logout()" class="btn-logout">Se déconnecter</button>
+        </div>
+
         <div id="loggedInView" class="view-box" style="display: none;">
-            <h1>Salut, <span id="userName">Athlète</span> !</h1>
+            <h1>Salut, <span class="u-name">Athlète</span> !</h1>
             
             <div class="stats-grid">
                 <div class="stat-card">
                     <h3>Bilan du Jour</h3>
-                    <p>Séance : Jambes / Cardio</p>
+                    <p id="displayObjectif">Objectif : Non défini</p>
                     <small>Intensité : Haute</small>
                 </div>
                 <div class="stat-card">
-                    <h3>Passages ce mois</h3>
-                    <p><span class="gold-text">14</span> séances</p>
+                    <h3>Séances effectuées</h3>
+                    <p id="nbSeances" style="font-size: 2rem; color: #ffcc00;">...</p> 
                 </div>
             </div>
 
@@ -94,67 +103,159 @@
                 <button class="btn-gold" onclick="validerReservation()">Réserver ma place</button>
             </div>
 
-            <button onclick="logout()" class="btn-logout">Se déconnecter</button>
+            <div class="profile-section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #444;">
+                <h3><i class="fas fa-user-edit"></i> Modifier mon Profil</h3>
+                <div class="booking-controls" style="margin-top: 15px;">
+                    <input type="text" id="editNom" placeholder="Ton nom de guerrier" style="padding: 10px; border-radius: 5px; border: 1px solid #ffcc00; background: #222; color: white;">
+                    <select id="editObjectif">
+                        <option value="">Choisir un objectif...</option>
+                        <option value="Prise de masse">Prise de masse</option>
+                        <option value="Perte de poids">Perte de poids</option>
+                        <option value="Endurance">Endurance / Cardio</option>
+                        <option value="Bien-être">Bien-être / Yoga</option>
+                    </select>
+                </div>
+                <button class="btn-gold" style="margin-top: 15px;" onclick="mettreAJourProfil()">Enregistrer mon profil</button>
+            </div>
+
+            <button onclick="logout()" class="btn-logout" style="margin-top: 30px;">Se déconnecter</button>
         </div>
     </section>
-</div>
-
- <!-- Bouton d'aide -->
-<div id="mc-help-button">?</div>
-
-<!-- Panneau de chat -->
-<div id="mc-chat-panel">
-  <div id="mc-chat-header">Assistance</div>
-  <div id="mc-chat-messages"></div>
-  <input id="mc-chat-input" type="text" placeholder="Écris ton message..." />
-</div>
 
     <footer>
         <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
     </footer>
 
     <script>
-        // Logique de session
+        const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const userEmail = sessionStorage.getItem("userEmail");
         const isLoggedIn = sessionStorage.getItem("isLoggedIn");
-        if (isLoggedIn === "true") {
-            document.getElementById("loggedInView").style.display = "block";
-            const userEmail = sessionStorage.getItem("userEmail");
-            if(userEmail) { document.getElementById("userName").innerText = userEmail.split('@')[0]; }
-        } else {
-            document.getElementById("loggedOutView").style.display = "block";
+
+        async function verifierAccesEtChargerDonnees() {
+            if (isLoggedIn !== "true" || !userEmail) {
+                document.getElementById("loggedOutView").style.display = "block";
+                return;
+            }
+
+            try {
+                const { data: user, error } = await supabaseClient
+                    .from('utilisateurs')
+                    .select('nom, est_abonne, objectif')
+                    .eq('email', userEmail)
+                    .maybeSingle();
+
+                if (user) {
+                    // Mise à jour du nom et de l'objectif sur la page
+                    document.querySelectorAll(".u-name").forEach(el => el.innerText = user.nom || userEmail.split('@')[0]);
+                    document.getElementById('displayObjectif').innerText = "Objectif : " + (user.objectif || "Non défini");
+                    
+                    // Pré-remplir les champs du formulaire de profil
+                    document.getElementById('editNom').value = user.nom || "";
+                    document.getElementById('editObjectif').value = user.objectif || "";
+
+                    if (user.est_abonne === true) {
+                        document.getElementById("loggedInView").style.display = "block";
+                        
+                        // Charger les séances
+                        const { count } = await supabaseClient
+                            .from('seances')
+                            .select('*', { count: 'exact', head: true })
+                            .eq('user_email', userEmail);
+                        document.getElementById('nbSeances').innerText = count || 0;
+
+                        // Charger les réservations
+                        chargerReservationsExistantes();
+                    } else {
+                        document.getElementById("noAboView").style.display = "block";
+                    }
+                }
+            } catch (err) {
+                console.error("Erreur critique :", err);
+            }
+        }
+
+        // MISE À JOUR DU PROFIL
+        async function mettreAJourProfil() {
+            const nouveauNom = document.getElementById('editNom').value;
+            const nouvelObjectif = document.getElementById('editObjectif').value;
+
+            try {
+                const { error } = await supabaseClient
+                    .from('utilisateurs')
+                    .update({ 
+                        nom: nouveauNom, 
+                        objectif: nouvelObjectif 
+                    })
+                    .eq('email', userEmail);
+
+                if (error) throw error;
+
+                // Actualisation visuelle immédiate
+                document.querySelectorAll(".u-name").forEach(el => el.innerText = nouveauNom);
+                document.getElementById('displayObjectif').innerText = "Objectif : " + (nouvelObjectif || "Non défini");
+
+                // Succès Toast
+                const toast = document.getElementById("customToast");
+                document.getElementById("toastMessage").innerText = "Profil mis à jour !";
+                toast.classList.add("active");
+                setTimeout(() => toast.classList.remove("active"), 3000);
+
+            } catch (err) {
+                alert("Erreur lors de la mise à jour du profil.");
+                console.error(err);
+            }
+        }
+
+        async function chargerReservationsExistantes() {
+            const { data: reservations, error } = await supabaseClient
+                .from('reservations')
+                .select('*')
+                .eq('user_email', userEmail);
+
+            if (reservations) {
+                reservations.forEach(res => {
+                    const slot = document.getElementById("slot-" + res.jour);
+                    if (slot) {
+                        slot.innerText = res.cours;
+                        slot.classList.add("booked-text");
+                    }
+                });
+            }
+        }
+
+        async function validerReservation() {
+            const jour = document.getElementById("daySelect").value;
+            const cours = document.getElementById("courseSelect").value;
+            try {
+                const { error } = await supabaseClient
+                    .from('reservations')
+                    .insert([{ user_email: userEmail, jour: jour, cours: cours }]);
+
+                if (error) throw error;
+
+                const slot = document.getElementById("slot-" + jour);
+                slot.innerText = cours;
+                slot.classList.add("booked-text");
+
+                const toast = document.getElementById("customToast");
+                document.getElementById("toastMessage").innerText = "Réservé pour le " + jour;
+                toast.classList.add("active");
+                setTimeout(() => toast.classList.remove("active"), 3000);
+            } catch (err) {
+                alert("Erreur lors de la réservation.");
+            }
         }
 
         function logout() {
             sessionStorage.clear();
-            window.location.reload(); 
-        } 
-
-        // Logique d'interaction Planning + Toast
-        function validerReservation() {
-            const jour = document.getElementById("daySelect").value;
-            const cours = document.getElementById("courseSelect").value;
-            
-            // Mise à jour de l'emploi du temps
-            const slot = document.getElementById("slot-" + jour);
-            const parentCol = document.getElementById("day-" + jour);
-            
-            slot.innerText = cours;
-            slot.classList.add("booked-text");
-            
-            // Petit effet visuel sur la colonne
-            parentCol.classList.add("updated");
-            setTimeout(() => parentCol.classList.remove("updated"), 800);
-
-            // Notification
-            const toast = document.getElementById("customToast");
-            const toastMsg = document.getElementById("toastMessage");
-            toastMsg.innerText = "Ajouté au planning du " + jour;
-            toast.classList.add("active");
-            setTimeout(() => { toast.classList.remove("active"); }, 3000);
+            window.location.href = "connexion.html";
         }
-    </script>
 
-    
+        verifierAccesEtChargerDonnees();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

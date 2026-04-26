@@ -6,7 +6,10 @@
     <title>Connexion - MUSCLEFIT</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
+
 <body class="login-page-body">
 
     <header class="header">
@@ -17,7 +20,6 @@
             <li><a href="programme.html">Programme</a></li>
             <li><a href="moncompte.html">Mon compte</a></li>
             <li><a href="boutique.html">Boutique</a></li>
-
             <li><a class="active" href="connexion.html">Connexion</a></li>
         </nav>
     </header>
@@ -34,66 +36,87 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" name="password" placeholder="Mot de passe" required>
                 </div>
+                
                 <p id="errorMessage" style="color: red; font-size: 0.8rem; margin-bottom: 10px; display: none; font-weight: bold; text-align: center; width: 100%;">Identifiants incorrects !</p>
+                
                 <button type="submit" class="btn-submit">Entrer dans la salle</button>
                 <p class="switch-form">Pas encore membre ? <a href="inscription.html">Inscris-toi ici</a></p>
             </form>
         </div>
     </section>
+
     <div class="carousel">
-    <div class="group">
-        <div class="card3">Hydrate-toi avant et après chaque séance.</div>
-        <div class="card3">Priorise la technique avant la charge.</div>
-        <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
-        <div class="card3">- Le repos fait partie de l'entraînement  -</div>
-        <div class="card3">Hydrate-toi avant et après chaque séance.</div>
-        <div class="card3">Priorise la technique avant la charge.</div>
-        <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
-        <div class="card3">- Le repos fait partie de l'entraînement.</div>
+        <div class="group">
+            <div class="card3">Hydrate-toi avant et après chaque séance.</div>
+            <div class="card3">Priorise la technique avant la charge.</div>
+            <div class="card3">10 minutes d'échauffement = blessures évitées.</div>
+            <div class="card3">- Le repos fait partie de l'entraînement -</div>
+        </div>
     </div>
-</div>
-
-
 
     <footer>
         <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
     </footer>
 
     <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault();
+        // 1. CONFIGURATION SUPABASE
+        const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co";
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        const email = event.target.email.value;
-        const password = event.target.password.value;
-        const errorMsg = document.getElementById('errorMessage');
+        // 2. GESTION DU FORMULAIRE
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-        const userTest = "johanfdr@icloud.com";
-        const passTest = "1234";
-
-        if (email === userTest && password === passTest) {
-            sessionStorage.setItem("isLoggedIn", "true");
-            sessionStorage.setItem("userEmail", email);
-            window.location.href = "moncompte.html";
-        } else {
-            errorMsg.style.display = "block";
+            const emailTape = event.target.email.value;
+            const passwordTape = event.target.password.value;
+            const errorMsg = document.getElementById('errorMessage');
             const box = document.querySelector('.form-box');
-            box.style.animation = "shake 0.5s";
-            setTimeout(() => box.style.animation = "", 500);
+
+            try {
+                // Requête à Supabase
+                const { data: utilisateur, error } = await supabaseClient
+                    .from('utilisateurs')
+                    .select('*')
+                    .eq('email', emailTape)
+                    .eq('mot_de_passe', passwordTape)
+                    .maybeSingle();
+
+                if (utilisateur) {
+                    // --- ÉTAPE SUCCÈS ---
+                    // On enregistre les infos dans le navigateur pour les autres pages
+                    sessionStorage.setItem("isLoggedIn", "true");
+                    sessionStorage.setItem("userEmail", utilisateur.email); // Crucial pour compter les séances
+                    sessionStorage.setItem("userName", utilisateur.nom);
+                    
+                    // On redirige vers l'espace membre
+                    window.location.href = "moncompte.html";
+                } else {
+                    // --- ÉTAPE ÉCHEC ---
+                    afficherErreur(errorMsg, box);
+                }
+            } catch (err) {
+                console.error("Erreur technique :", err);
+                afficherErreur(errorMsg, box);
+            }
+        });
+
+        function afficherErreur(elementMsg, elementBox) {
+            elementMsg.style.display = "block";
+            elementBox.style.animation = "shake 0.5s";
+            setTimeout(() => {
+                elementBox.style.animation = "";
+            }, 500);
         }
-    });
-</script>
+    </script>
 
- <!-- Bouton d'aide -->
-<div id="mc-help-button">?</div>
-
-<!-- Panneau de chat -->
-<div id="mc-chat-panel">
-  <div id="mc-chat-header">Assistance</div>
-  <div id="mc-chat-messages"></div>
-  <input id="mc-chat-input" type="text" placeholder="Écris ton message..." />
-</div>
-
-<script src="script.js"></script>
+    <div id="mc-help-button">?</div>
+    <div id="mc-chat-panel">
+      <div id="mc-chat-header">Assistance</div>
+      <div id="mc-chat-messages"></div>
+      <input id="mc-chat-input" type="text" placeholder="Écris ton message..." />
+    </div>
+    <script src="script.js"></script>
 
 </body>
 </html>

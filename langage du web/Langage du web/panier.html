@@ -3,41 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Panier - MUSCLEFIT</title>
+    <title>Paiement Réussi - MUSCLEFIT</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
-<body class="programme-page">
+<body class="programme-page payment-success-body">
+
     <header class="header">
         <img src="images/logo.png" alt="Logo" class="logo">
         <nav class="nav">
             <li><a href="Muscle fit V2.html">Accueil</a></li> 
             <li><a href="boutique.html">Boutique</a></li>
-            <li><a class="active" href="#">Panier</a></li>
+            <li><a href="moncompte.html">Mon compte</a></li>
         </nav>
     </header>
 
-    <section class="top-page" style="height: 30vh;"> 
-        <h1 class="programme-title">VOTRE PANIER</h1>
-    </section>
-
-    <section class="account-container">
-        <div class="view-box">
-            <h3>Récapitulatif de la commande</h3>
-            <hr>
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 20px 0;">
-                <img src="images/creatine.png" style="width: 80px;">
-                <p><strong>Créatine Monohydrate</strong></p>
-                <p>Quantité : 1</p>
-                <p class="gold-text">24,99€</p>
+    <section class="success-container">
+        <div class="success-card">
+            <div class="check-icon">
+                <i class="fas fa-check-circle"></i>
             </div>
-            <hr>
-            <div style="text-align: right; margin-top: 20px;">
-                <h4>Total : <span class="gold-text">24,99€</span></h4>
-                <p style="font-size: 0.8rem; color: gray;">Frais de port : Offerts</p>
-                <br>
-                <a href="confirmation.html" class="btn-submit" style="text-decoration: none; display: inline-block;">Procéder au paiement</a>
+            <h1>Paiement Réussi !</h1>
+            <p class="thanks">Merci pour votre confiance, <span class="u-name">Athlète</span>.</p>
+            
+            <div class="order-info">
+                <p>Votre commande <strong>n°#MF-2026</strong> est en cours de préparation.</p>
+                <p>Un email de confirmation vous a été envoyé.</p>
             </div>
+            
+            <a href="Muscle fit V2.html" class="btn-gold">Retour à l'accueil</a>
         </div>
     </section>
+
+    <footer>
+        <p class="copyright">&copy; 2026 - MUSCLEFIT</p>
+    </footer>
+
+    <script>
+        // On récupère le nom stocké lors de la connexion
+        const userNom = sessionStorage.getItem("userName");
+        
+        // Si un nom existe, on remplace le texte "Athlète" par le vrai nom
+        if (userNom) {
+            document.querySelector(".u-name").innerText = userNom;
+        }
+    </script>
+
 </body>
 </html>
