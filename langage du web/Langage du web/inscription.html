@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - MUSCLEFIT</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="login-page-body">
+
+    <header class="header">
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav class="nav">
+            <li><a href="Muscle fit V2.html">Accueil</a></li> 
+            <li><a href="connexion.html">Connexion</a></li>
+        </nav>
+    </header>
+
+    <section class="login-hero">
+        <div class="form-box">
+            <h1>Créer un compte</h1>
+            <form id="signupForm">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="signupName" placeholder="Nom complet" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="signupEmail" placeholder="Email" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="signupPassword" placeholder="Mot de passe" required>
+                </div>
+                <button type="submit" class="btn-submit">S'inscrire</button>
+                <p class="switch-form">Déjà membre ? <a href="connexion.html">Connecte-toi</a></p>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // CONFIGURATION SUPABASE (À REMPLACER)
+        const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co"; 
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U"; 
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // LOGIQUE D'ENVOI
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nom = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const mdp = document.getElementById('signupPassword').value;
+
+            const { data, error } = await supabaseClient
+                .from('utilisateurs') // Ta table dans Supabase
+                .insert([{ nom: nom, email: email, mot_de_passe: mdp }]);
+
+            if (error) {
+                alert("Erreur : " + error.message);
+            } else {
+                alert("Inscription réussie !");
+                window.location.href = "connexion.html";
+            }
+        });
+    </script>
+</body>
+</html>
