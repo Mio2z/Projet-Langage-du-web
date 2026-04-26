@@ -148,7 +148,7 @@
                     .maybeSingle();
 
                 if (user) {
-                    // Mise à jour du nom et de l'objectif sur la page
+                   
                     document.querySelectorAll(".u-name").forEach(el => el.innerText = user.nom || userEmail.split('@')[0]);
                     document.getElementById('displayObjectif').innerText = "Objectif : " + (user.objectif || "Non défini");
                     
