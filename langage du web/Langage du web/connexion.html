@@ -59,12 +59,12 @@
     </footer>
 
     <script>
-        // 1. CONFIGURATION SUPABASE
+        
         const SUPABASE_URL = "https://kkhyeqsnwniuwiorjwjl.supabase.co";
         const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtraHllcXNud25pdXdpb3Jqd2psIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcxNjY5ODUsImV4cCI6MjA5Mjc0Mjk4NX0.HRKlsoURVvC8JZ5BOSe7lbBcUbzhAqWY5wb2puMu44U";
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-        // 2. GESTION DU FORMULAIRE
+        
         document.getElementById('loginForm').addEventListener('submit', async (event) => {
             event.preventDefault();
 
@@ -74,7 +74,7 @@
             const box = document.querySelector('.form-box');
 
             try {
-                // Requête à Supabase
+                
                 const { data: utilisateur, error } = await supabaseClient
                     .from('utilisateurs')
                     .select('*')
