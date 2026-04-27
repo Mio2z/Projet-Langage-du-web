@@ -152,7 +152,7 @@
                     document.querySelectorAll(".u-name").forEach(el => el.innerText = user.nom || userEmail.split('@')[0]);
                     document.getElementById('displayObjectif').innerText = "Objectif : " + (user.objectif || "Non défini");
                     
-                    // Pré-remplir les champs du formulaire de profil
+
                     document.getElementById('editNom').value = user.nom || "";
                     document.getElementById('editObjectif').value = user.objectif || "";
 
@@ -166,7 +166,7 @@
                             .eq('user_email', userEmail);
                         document.getElementById('nbSeances').innerText = count || 0;
 
-                        // Charger les réservations
+
                         chargerReservationsExistantes();
                     } else {
                         document.getElementById("noAboView").style.display = "block";
